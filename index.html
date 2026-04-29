@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anyelo Dalton | CEO Star Studios & Director</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary-green: #3d633d;
@@ -105,7 +106,7 @@
             color: var(--text-muted);
         }
 
-        /* --- REPERTORIO / PORTAFOLIO --- */
+        /* --- SECCIONES --- */
         .section-padding { padding: 6rem 5%; }
 
         .section-header {
@@ -131,6 +132,7 @@
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
+            font-family: 'Quicksand', sans-serif;
             transition: 0.3s;
         }
 
@@ -172,7 +174,7 @@
         .art-title { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--secondary-green); }
         .art-desc { font-size: 0.95rem; color: var(--text-muted); }
 
-        /* --- SOBRE MÍ EXPANDIDO --- */
+        /* --- SOBRE MÍ --- */
         .about-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -192,7 +194,7 @@
 
         .stat-box {
             padding: 1.5rem;
-            background: var(--white);
+            background: var(--paper-bg);
             border-left: 4px solid var(--accent-gold);
             border-radius: 8px;
         }
@@ -200,7 +202,131 @@
         .stat-box h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.5rem; }
         .stat-box p { font-size: 0.9rem; font-weight: 600; }
 
-        /* --- CONTACTO / COMISIONES --- */
+        /* --- BOTONES --- */
+        .btn-gold {
+            display: inline-block;
+            padding: 0.9rem 2.4rem;
+            background: var(--accent-gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: 0.3s;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .btn-gold:hover { background: #b0893b; transform: scale(1.05); }
+
+        /* --- GALERÍA HUB --- */
+        #galerias {
+            background: var(--secondary-green);
+            padding: 6rem 5%;
+        }
+
+        #galerias .section-header h2 { color: var(--white); }
+        #galerias .section-header p { color: rgba(255,255,255,0.7); margin-top: 0.8rem; font-size: 1.05rem; }
+
+        .gallery-hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin-top: 3.5rem;
+        }
+
+        .gallery-hub-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--white);
+            transition: 0.35s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-hub-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--accent-gold);
+            opacity: 0;
+            transition: 0.35s;
+            border-radius: 20px;
+        }
+
+        .gallery-hub-card:hover::before { opacity: 0.12; }
+        .gallery-hub-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .gallery-hub-card * { position: relative; z-index: 1; }
+
+        .hub-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+
+        .hub-card-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+        }
+
+        .gallery-hub-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .gallery-hub-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+            margin: 0;
+        }
+
+        .hub-arrow {
+            margin-top: 0.5rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .gallery-hub-card:hover .hub-arrow {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+
+        /* --- SERVICIOS --- */
+        .service-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: 0.4s;
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.07); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .service-card h3 { color: var(--accent-gold); margin-bottom: 0.7rem; font-size: 1.35rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- CTA COMISIONES --- */
         .cta-section {
             background: var(--secondary-green);
             color: var(--white);
@@ -210,31 +336,231 @@
             margin: 0 5% 5rem;
         }
 
-        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-        .btn-gold {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: var(--accent-gold);
-            color: white;
+        .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto; }
+
+        /* --- CONTACTO PROFESIONAL --- */
+        #contacto-full {
+            padding: 6rem 5%;
+            background: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            margin-top: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--secondary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--paper-dark);
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            margin-top: 2rem;
+            color: var(--text-dark);
             transition: 0.3s;
         }
-        .btn-gold:hover { background: #b0893b; transform: scale(1.05); }
+        .contact-item:hover { color: var(--primary-green); padding-left: 8px; }
 
+        .contact-item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: var(--paper-bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--primary-green);
+            flex-shrink: 0;
+            transition: 0.3s;
+        }
+
+        .contact-item:hover .contact-item-icon {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .contact-item-text strong { display: block; font-weight: 700; font-size: 0.9rem; }
+        .contact-item-text span { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Social Grid */
+        .social-panel {
+            background: var(--paper-bg);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .social-panel h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-green);
+            margin-bottom: 0.4rem;
+        }
+
+        .social-panel > p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .social-btn i { font-size: 1.2rem; width: 20px; text-align: center; }
+
+        .social-btn.instagram { background: #fff0f5; color: #c13584; }
+        .social-btn.instagram:hover { border-color: #c13584; transform: scale(1.03); }
+
+        .social-btn.youtube { background: #fff5f5; color: #ff0000; }
+        .social-btn.youtube:hover { border-color: #ff0000; transform: scale(1.03); }
+
+        .social-btn.tiktok { background: #f5f5f5; color: #010101; }
+        .social-btn.tiktok:hover { border-color: #010101; transform: scale(1.03); }
+
+        .social-btn.twitter { background: #f0f8ff; color: #1da1f2; }
+        .social-btn.twitter:hover { border-color: #1da1f2; transform: scale(1.03); }
+
+        .social-btn.behance { background: #eef4ff; color: #1769ff; }
+        .social-btn.behance:hover { border-color: #1769ff; transform: scale(1.03); }
+
+        .social-btn.linkedin { background: #f0f7ff; color: #0a66c2; }
+        .social-btn.linkedin:hover { border-color: #0a66c2; transform: scale(1.03); }
+
+        .social-btn.discord { background: #f3f4ff; color: #5865f2; }
+        .social-btn.discord:hover { border-color: #5865f2; transform: scale(1.03); }
+
+        .social-btn.artstation { background: #f5f5f5; color: #13aff0; }
+        .social-btn.artstation:hover { border-color: #13aff0; transform: scale(1.03); }
+
+        .availability-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 2rem;
+        }
+
+        .availability-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4caf50;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        /* --- FOOTER --- */
         footer {
-            padding: 4rem 5%;
+            padding: 4rem 5% 3rem;
             background: #1a2a1a;
             color: rgba(255,255,255,0.6);
             text-align: center;
         }
 
+        .footer-logo-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.6rem;
+            color: var(--white);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .footer-logo-studio {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav a {
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .footer-nav a:hover { color: var(--accent-gold); }
+
+        .footer-divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 2rem auto;
+            border-radius: 2px;
+        }
+
+        .footer-copy {
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.35);
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
             .about-container { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
             nav ul { display: none; }
+            .gallery-hub-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .social-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 500px) {
+            .gallery-hub-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+            .hub-icon { font-size: 2.2rem; }
+            .gallery-hub-card { padding: 1.8rem 1rem; }
         }
     </style>
 </head>
@@ -248,23 +574,26 @@
         <nav>
             <ul>
                 <li><a href="#repertorio">Repertorio</a></li>
+                <li><a href="#galerias">Galerías</a></li>
                 <li><a href="#sobre-mi">Quién Soy</a></li>
                 <li><a href="#comisiones">Servicios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto-full">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- HERO -->
     <section class="hero">
         <span class="hero-label">Diseño • Animación • Dirección</span>
         <h1>Dando vida a historias <span>independientes.</span></h1>
         <p>Estudiante de Diseño Gráfico y Animación, CEO de Star Studios y director creativo enfocado en el desarrollo visual y la narrativa cinematográfica.</p>
-        <div style="display: flex; gap: 1rem; justify-content: center;">
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="#repertorio" class="btn-gold" style="margin-top: 0;">Explorar Arte</a>
-            <a href="#contacto" class="btn-gold" style="margin-top: 0; background: transparent; border: 2px solid var(--accent-gold);">Trabajemos Juntos</a>
+            <a href="#contacto-full" class="btn-gold" style="margin-top: 0; background: transparent; border: 2px solid var(--accent-gold); color: var(--accent-gold);">Trabajemos Juntos</a>
         </div>
     </section>
 
+    <!-- REPERTORIO -->
     <section id="repertorio" class="section-padding">
         <div class="section-header">
             <h2>Mi Repertorio de Arte</h2>
@@ -329,19 +658,84 @@
         </div>
     </section>
 
+    <!-- ══════════════════════════════════════════
+         GALERÍA HUB — NUEVAS PÁGINAS
+    ══════════════════════════════════════════ -->
+    <section id="galerias">
+        <div class="section-header">
+            <h2>Explora por Categoría</h2>
+            <p>Navega cada sección de mi trabajo en su propio espacio dedicado.</p>
+            <div class="divider" style="background: rgba(255,255,255,0.35); margin-top: 1.2rem;"></div>
+        </div>
+
+        <div class="gallery-hub-grid">
+
+            <a href="dibujos.html" class="gallery-hub-card">
+                <span class="hub-icon">🖊️</span>
+                <span class="hub-card-label">Galería</span>
+                <h3>Dibujos</h3>
+                <p>Ilustraciones terminadas, arte digital y obras a tinta.</p>
+                <div class="hub-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="bocetos.html" class="gallery-hub-card">
+                <span class="hub-icon">📒</span>
+                <span class="hub-card-label">Galería</span>
+                <h3>Bocetos</h3>
+                <p>Cuaderno de apuntes, estudios y dibujo rápido del natural.</p>
+                <div class="hub-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="disenos.html" class="gallery-hub-card">
+                <span class="hub-icon">🎨</span>
+                <span class="hub-card-label">Galería</span>
+                <h3>Diseños</h3>
+                <p>Branding, logotipos, diseño editorial y packaging.</p>
+                <div class="hub-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="concept-art.html" class="gallery-hub-card">
+                <span class="hub-icon">🌌</span>
+                <span class="hub-card-label">Galería</span>
+                <h3>Concept Art</h3>
+                <p>Personajes, props y mundos para animación y videojuegos.</p>
+                <div class="hub-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="comics.html" class="gallery-hub-card">
+                <span class="hub-icon">📖</span>
+                <span class="hub-card-label">Galería</span>
+                <h3>Cómics</h3>
+                <p>Novelas gráficas, viñetas y narrativa secuencial propia.</p>
+                <div class="hub-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+            <a href="animaciones.html" class="gallery-hub-card">
+                <span class="hub-icon">🎬</span>
+                <span class="hub-card-label">Galería</span>
+                <h3>Animaciones</h3>
+                <p>Cortos animados, loops y proyectos de Star Studios.</p>
+                <div class="hub-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- SOBRE MÍ -->
     <section id="sobre-mi" class="section-padding" style="background: var(--white);">
         <div class="about-container">
-            <div class="about-image" style="background: var(--paper-dark); height: 500px; border-radius: 20px;">
-                </div>
+            <div class="about-image" style="background: var(--paper-dark); height: 500px; border-radius: 20px; display:flex; align-items:center; justify-content:center; color: var(--text-muted); font-style:italic;">
+                [Foto / Arte]
+            </div>
             <div class="about-content">
                 <span class="hero-label" style="margin-bottom: 0.5rem;">Trayectoria</span>
                 <h3>Anyelo "Dalton"</h3>
                 <div class="about-text">
-                    <p>Soy un creativo multidisciplinar actualmente cursando la carrera de **Diseño Gráfico y Animación**. Mi enfoque combina la rigurosidad técnica del diseño con la libertad expresiva de la animación indie.</p>
-                    <p>Como **CEO de Star Studios**, lidero equipos creativos para transformar ideas abstractas en realidades visuales. Mi trabajo no solo se limita a la creación de arte, sino a la **dirección integral**, asegurando que cada fotograma cumpla con una visión narrativa coherente.</p>
+                    <p>Soy un creativo multidisciplinar actualmente cursando la carrera de Diseño Gráfico y Animación. Mi enfoque combina la rigurosidad técnica del diseño con la libertad expresiva de la animación indie.</p>
+                    <p>Como CEO de Star Studios, lidero equipos creativos para transformar ideas abstractas en realidades visuales. Mi trabajo no solo se limita a la creación de arte, sino a la dirección integral, asegurando que cada fotograma cumpla con una visión narrativa coherente.</p>
                     <p>Me especializo en el análisis audiovisual y la construcción de mundos, desde el diseño de personajes en "I don't wanna be a dungeon creature" hasta la gestión de cortometrajes independientes y el desarrollo de cómics.</p>
                 </div>
-                
+
                 <div class="stats-grid">
                     <div class="stat-box">
                         <h4>Estudios</h4>
@@ -364,60 +758,168 @@
         </div>
     </section>
 
+    <!-- SERVICIOS -->
     <section id="comisiones" class="section-padding">
         <div class="section-header">
             <h2>Servicios Profesionales</h2>
             <div class="divider"></div>
         </div>
         <div class="art-grid">
-            <div class="art-item" style="padding: 2rem; text-align: center;">
-                <h3 style="color: var(--accent-gold);">Dirección de Arte</h3>
-                <p>Supervisión visual para proyectos de animación y juegos indie.</p>
+            <div class="service-card">
+                <span class="service-icon">🎭</span>
+                <h3>Dirección de Arte</h3>
+                <p>Supervisión visual integral para proyectos de animación, videojuegos indie y producción audiovisual.</p>
             </div>
-            <div class="art-item" style="padding: 2rem; text-align: center;">
-                <h3 style="color: var(--accent-gold);">Concept Art</h3>
-                <p>Diseño de personajes, props y entornos para narrativa visual.</p>
+            <div class="service-card">
+                <span class="service-icon">✏️</span>
+                <h3>Concept Art</h3>
+                <p>Diseño de personajes, props y entornos para cualquier tipo de narrativa visual o producción.</p>
             </div>
-            <div class="art-item" style="padding: 2rem; text-align: center;">
-                <h3 style="color: var(--accent-gold);">Diseño Gráfico</h3>
-                <p>Branding, identidad visual y diseño editorial profesional.</p>
+            <div class="service-card">
+                <span class="service-icon">🖋️</span>
+                <h3>Diseño Gráfico</h3>
+                <p>Branding, identidad visual, diseño editorial y packaging profesional a medida.</p>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="cta-section">
+    <!-- CTA COMISIONES -->
+    <section class="cta-section" id="comisiones-cta">
         <h2>¿Tienes un proyecto en mente?</h2>
         <p>Estoy disponible para colaboraciones, dirección de proyectos y comisiones de arte personalizadas.</p>
-        <a href="mailto:tuemail@ejemplo.com" class="btn-gold">Enviar Mensaje Directo</a>
+        <a href="#contacto-full" class="btn-gold">Hablemos →</a>
     </section>
 
-    <footer>
-        <p>Anyelo Dalton | CEO Star Studios | © 2026</p>
-        <div style="margin-top: 1rem;">
-            <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Instagram</a>
-            <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">YouTube</a>
-            <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">LinkedIn</a>
+    <!-- ══════════════════════════════════════════
+         CONTACTO PROFESIONAL
+    ══════════════════════════════════════════ -->
+    <section id="contacto-full">
+        <div class="section-header" style="margin-bottom: 0;">
+            <h2>Contacto & Redes</h2>
+            <div class="divider"></div>
+            <p style="color: var(--text-muted); margin-top: 0.8rem; font-size: 1.05rem;">¿Hablamos? Encuéntrame donde prefieras.</p>
         </div>
+
+        <div class="contact-grid">
+            <!-- Columna izquierda: datos directos -->
+            <div class="contact-info">
+                <h3>Contacto Directo</h3>
+                <p>Para comisiones, colaboraciones o cualquier consulta profesional.</p>
+
+                <a href="mailto:tuemail@ejemplo.com" class="contact-item">
+                    <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="contact-item-text">
+                        <strong>Correo Electrónico</strong>
+                        <span>tuemail@ejemplo.com</span>
+                    </div>
+                </a>
+
+                <a href="https://wa.me/51999999999" target="_blank" class="contact-item">
+                    <div class="contact-item-icon" style="color: #25d366;"><i class="fa-brands fa-whatsapp"></i></div>
+                    <div class="contact-item-text">
+                        <strong>WhatsApp</strong>
+                        <span>+51 999 999 999</span>
+                    </div>
+                </a>
+
+                <a href="https://www.behance.net/anyelodalton" target="_blank" class="contact-item">
+                    <div class="contact-item-icon" style="color: #1769ff;"><i class="fa-brands fa-behance"></i></div>
+                    <div class="contact-item-text">
+                        <strong>Behance Portfolio</strong>
+                        <span>behance.net/anyelodalton</span>
+                    </div>
+                </a>
+
+                <a href="https://www.linkedin.com/in/anyelodalton" target="_blank" class="contact-item">
+                    <div class="contact-item-icon" style="color: #0a66c2;"><i class="fa-brands fa-linkedin"></i></div>
+                    <div class="contact-item-text">
+                        <strong>LinkedIn</strong>
+                        <span>linkedin.com/in/anyelodalton</span>
+                    </div>
+                </a>
+
+                <span class="availability-badge">Disponible para proyectos</span>
+            </div>
+
+            <!-- Columna derecha: redes sociales -->
+            <div class="social-panel">
+                <h3>Redes Sociales</h3>
+                <p>Sígueme para ver proceso creativo, novedades y lanzamientos de Star Studios.</p>
+
+                <div class="social-grid">
+                    <a href="https://instagram.com/anyelodalton" target="_blank" class="social-btn instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                        Instagram
+                    </a>
+                    <a href="https://youtube.com/@anyelodalton" target="_blank" class="social-btn youtube">
+                        <i class="fa-brands fa-youtube"></i>
+                        YouTube
+                    </a>
+                    <a href="https://tiktok.com/@anyelodalton" target="_blank" class="social-btn tiktok">
+                        <i class="fa-brands fa-tiktok"></i>
+                        TikTok
+                    </a>
+                    <a href="https://x.com/anyelodalton" target="_blank" class="social-btn twitter">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        X / Twitter
+                    </a>
+                    <a href="https://behance.net/anyelodalton" target="_blank" class="social-btn behance">
+                        <i class="fa-brands fa-behance"></i>
+                        Behance
+                    </a>
+                    <a href="https://linkedin.com/in/anyelodalton" target="_blank" class="social-btn linkedin">
+                        <i class="fa-brands fa-linkedin"></i>
+                        LinkedIn
+                    </a>
+                    <a href="https://discord.gg/starstudios" target="_blank" class="social-btn discord">
+                        <i class="fa-brands fa-discord"></i>
+                        Discord
+                    </a>
+                    <a href="https://artstation.com/anyelodalton" target="_blank" class="social-btn artstation">
+                        <i class="fa-solid fa-palette"></i>
+                        ArtStation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span class="footer-logo-name">Anyelo Dalton</span>
+        <span class="footer-logo-studio">Star Studios CEO</span>
+
+        <div class="footer-nav">
+            <a href="#repertorio">Repertorio</a>
+            <a href="#galerias">Galerías</a>
+            <a href="#sobre-mi">Quién Soy</a>
+            <a href="#comisiones">Servicios</a>
+            <a href="#contacto-full">Contacto</a>
+        </div>
+
+        <div class="footer-divider"></div>
+
+        <p class="footer-copy">© 2026 Anyelo Dalton · Star Studios · Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // Animación suave de scroll
-        document.querySelectorAll('nav a').forEach(anchor => {
+        // Scroll suave para todos los anclas internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
-        // Simulación de filtros de portafolio
+        // Filtros de portafolio
         const filters = document.querySelectorAll('.filter-btn');
         filters.forEach(btn => {
             btn.addEventListener('click', () => {
                 filters.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                // Aquí podrías añadir lógica para ocultar/mostrar elementos
             });
         });
     </script>

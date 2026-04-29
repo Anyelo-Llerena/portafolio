@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bocetos | Anyelo Dalton · Star Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #fdf8e6;
+            --paper-dark: #f0e9d1;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #ffffff;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Quicksand', sans-serif; background-color: var(--paper-bg); color: var(--text-dark); }
+        h1,h2,h3,h4 { font-family: 'Fredoka', sans-serif; }
+
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--paper-dark);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-name { font-size: 1.4rem; font-weight: 600; color: var(--primary-green); line-height: 1; }
+        .logo-studio { font-size: 0.75rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.4rem;
+            border-radius: 30px;
+            background: var(--paper-dark);
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--primary-green); color: white; }
+
+        /* HERO BANNER */
+        .page-banner {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+            color: white;
+        }
+        .banner-emoji { font-size: 4.5rem; display: block; margin-bottom: 1rem; }
+        .banner-label {
+            font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.8rem; display: block;
+        }
+        .page-banner h1 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
+        .page-banner p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; opacity: 0.8; }
+
+        /* PLACEHOLDER ZONE */
+        .content-zone {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .placeholder-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: 0.35s;
+        }
+        .placeholder-card:hover { transform: translateY(-8px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
+
+        .placeholder-thumb {
+            height: 200px;
+            background: var(--paper-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.9rem;
+            border-bottom: 1px dashed var(--paper-dark);
+        }
+        .placeholder-thumb-icon { font-size: 2.5rem; opacity: 0.4; }
+
+        .placeholder-info { padding: 1.4rem; }
+        .placeholder-tag {
+            font-size: 0.72rem; font-weight: 700; color: var(--accent-gold);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem; display: block;
+        }
+        .placeholder-info h3 { font-size: 1.1rem; color: var(--secondary-green); }
+
+        /* COMING SOON BANNER */
+        .coming-soon-banner {
+            background: var(--white);
+            border: 2px dashed var(--paper-dark);
+            border-radius: 24px;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .cs-icon { font-size: 4rem; margin-bottom: 1.2rem; display: block; }
+        .coming-soon-banner h2 { font-size: 2rem; color: var(--secondary-green); margin-bottom: 0.8rem; }
+        .coming-soon-banner p { color: var(--text-muted); max-width: 480px; margin: 0 auto 2rem; }
+        .btn-gold {
+            display: inline-block; padding: 0.85rem 2rem;
+            background: var(--accent-gold); color: white; text-decoration: none;
+            border-radius: 50px; font-weight: 700; transition: 0.3s;
+        }
+        .btn-gold:hover { background: #b0893b; transform: scale(1.05); }
+
+        footer {
+            padding: 3rem 5%;
+            background: #1a2a1a;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a { color: var(--accent-gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <a href="index.html" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+        </a>
+    </header>
+
+    <section class="page-banner">
+        <span class="banner-emoji">📒</span>
+        <span class="banner-label">Galería · Star Studios</span>
+        <h1>Bocetos</h1>
+        <p>Cuaderno de apuntes en vivo: estudios del natural, anatomía, dibujo rápido y exploración de ideas.</p>
+    </section>
+
+    <div class="content-zone">
+
+        <!-- Placeholder cards — reemplaza con tus obras reales -->
+        <div class="placeholder-grid">
+            <div class="placeholder-card">
+                <div class="placeholder-thumb">
+                    <span class="placeholder-thumb-icon">📒</span>
+                    Próximamente
+                </div>
+                <div class="placeholder-info">
+                    <span class="placeholder-tag">Sketchbook</span>
+                    <h3>Obra 01 · Título por definir</h3>
+                </div>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-thumb">
+                    <span class="placeholder-thumb-icon">📒</span>
+                    Próximamente
+                </div>
+                <div class="placeholder-info">
+                    <span class="placeholder-tag">Sketchbook</span>
+                    <h3>Obra 02 · Título por definir</h3>
+                </div>
+            </div>
+            <div class="placeholder-card">
+                <div class="placeholder-thumb">
+                    <span class="placeholder-thumb-icon">📒</span>
+                    Próximamente
+                </div>
+                <div class="placeholder-info">
+                    <span class="placeholder-tag">Sketchbook</span>
+                    <h3>Obra 03 · Título por definir</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner de "en construcción" -->
+        <div class="coming-soon-banner">
+            <span class="cs-icon">🚧</span>
+            <h2>Esta sección está en construcción</h2>
+            <p>Pronto podrás ver toda mi colección de <strong>Bocetos</strong> aquí. ¡Vuelve pronto o contáctame si quieres ver trabajo ya realizado!</p>
+            <a href="index.html#contacto-full" class="btn-gold">Contáctame →</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Anyelo Dalton · <a href="index.html">Volver al inicio</a></p>
+    </footer>
+</body>
+</html>
