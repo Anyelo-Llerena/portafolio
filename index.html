@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anyelo Dalton | CEO Star Studios & Director</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #fdf8e6;
+            --paper-dark: #f0e9d1;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--paper-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: 'Fredoka', sans-serif; }
+
+        /* --- NAVEGACIÓN --- */
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--paper-dark);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            line-height: 1;
+        }
+
+        .logo-studio {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav ul { display: flex; list-style: none; gap: 2rem; }
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        nav a:hover { color: var(--primary-green); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            background: radial-gradient(circle at top, var(--white) 0%, var(--paper-bg) 100%);
+        }
+
+        .hero-label {
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-green);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto 2.5rem;
+            color: var(--text-muted);
+        }
+
+        /* --- REPERTORIO / PORTAFOLIO --- */
+        .section-padding { padding: 6rem 5%; }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .divider { width: 50px; height: 4px; background: var(--accent-gold); margin: 0 auto; border-radius: 2px; }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--paper-dark);
+            background: var(--white);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .art-item {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            transition: 0.4s;
+        }
+
+        .art-item:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.07); }
+
+        .art-preview {
+            width: 100%;
+            height: 250px;
+            background-color: var(--paper-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .art-info { padding: 1.8rem; }
+        .art-type { font-size: 0.75rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .art-title { font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--secondary-green); }
+        .art-desc { font-size: 0.95rem; color: var(--text-muted); }
+
+        /* --- SOBRE MÍ EXPANDIDO --- */
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-content h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .about-text p { margin-bottom: 1.2rem; font-size: 1.05rem; }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .stat-box {
+            padding: 1.5rem;
+            background: var(--white);
+            border-left: 4px solid var(--accent-gold);
+            border-radius: 8px;
+        }
+
+        .stat-box h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.5rem; }
+        .stat-box p { font-size: 0.9rem; font-weight: 600; }
+
+        /* --- CONTACTO / COMISIONES --- */
+        .cta-section {
+            background: var(--secondary-green);
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 5%;
+            border-radius: 40px;
+            margin: 0 5% 5rem;
+        }
+
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .btn-gold {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--accent-gold);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 2rem;
+            transition: 0.3s;
+        }
+        .btn-gold:hover { background: #b0893b; transform: scale(1.05); }
+
+        footer {
+            padding: 4rem 5%;
+            background: #1a2a1a;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .about-container { grid-template-columns: 1fr; gap: 3rem; }
+            nav ul { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#repertorio">Repertorio</a></li>
+                <li><a href="#sobre-mi">Quién Soy</a></li>
+                <li><a href="#comisiones">Servicios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <span class="hero-label">Diseño • Animación • Dirección</span>
+        <h1>Dando vida a historias <span>independientes.</span></h1>
+        <p>Estudiante de Diseño Gráfico y Animación, CEO de Star Studios y director creativo enfocado en el desarrollo visual y la narrativa cinematográfica.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center;">
+            <a href="#repertorio" class="btn-gold" style="margin-top: 0;">Explorar Arte</a>
+            <a href="#contacto" class="btn-gold" style="margin-top: 0; background: transparent; border: 2px solid var(--accent-gold);">Trabajemos Juntos</a>
+        </div>
+    </section>
+
+    <section id="repertorio" class="section-padding">
+        <div class="section-header">
+            <h2>Mi Repertorio de Arte</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="portfolio-filters">
+            <button class="filter-btn active">Todo</button>
+            <button class="filter-btn">Series Animadas</button>
+            <button class="filter-btn">Cómics</button>
+            <button class="filter-btn">Cortometrajes</button>
+            <button class="filter-btn">Bocetos & Conceptos</button>
+        </div>
+
+        <div class="art-grid">
+            <div class="art-item">
+                <div class="art-preview" style="background: linear-gradient(45deg, #1a1a1a, #2a472a);">
+                    [Preview: I don't wanna be a dungeon creature]
+                </div>
+                <div class="art-info">
+                    <span class="art-type">Serie Animada | Dirección</span>
+                    <h3 class="art-title">I don't wanna be a dungeon creature</h3>
+                    <p class="art-desc">Proyecto insignia de Star Studios. Dirección creativa, guion y supervisión de animación 2D.</p>
+                </div>
+            </div>
+
+            <div class="art-item">
+                <div class="art-preview">[Preview: Obra de Cómic]</div>
+                <div class="art-info">
+                    <span class="art-type">Narrativa Visual</span>
+                    <h3 class="art-title">Novelas Gráficas & Cómics</h3>
+                    <p class="art-desc">Exploración de narrativa secuencial, entintado digital y storytelling visual original.</p>
+                </div>
+            </div>
+
+            <div class="art-item">
+                <div class="art-preview">[Preview: Cortometrajes]</div>
+                <div class="art-info">
+                    <span class="art-type">Producción Audiovisual</span>
+                    <h3 class="art-title">Cortometrajes Star Studios</h3>
+                    <p class="art-desc">Colección de piezas experimentales y cortometrajes enfocados en análisis audiovisual.</p>
+                </div>
+            </div>
+
+            <div class="art-item">
+                <div class="art-preview">[Preview: Sketchbook]</div>
+                <div class="art-info">
+                    <span class="art-type">Bocetos & Práctica</span>
+                    <h3 class="art-title">El Cuaderno de Dalton</h3>
+                    <p class="art-desc">Estudios anatómicos, diseño de personajes y exploración de técnicas de dibujo rápido.</p>
+                </div>
+            </div>
+
+            <div class="art-item">
+                <div class="art-preview">[Preview: Branding]</div>
+                <div class="art-info">
+                    <span class="art-type">Diseño Gráfico</span>
+                    <h3 class="art-title">Identidad & Branding</h3>
+                    <p class="art-desc">Proyectos de diseño editorial, logotipos y empaques (como el proyecto NUTRAX).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre-mi" class="section-padding" style="background: var(--white);">
+        <div class="about-container">
+            <div class="about-image" style="background: var(--paper-dark); height: 500px; border-radius: 20px;">
+                </div>
+            <div class="about-content">
+                <span class="hero-label" style="margin-bottom: 0.5rem;">Trayectoria</span>
+                <h3>Anyelo "Dalton"</h3>
+                <div class="about-text">
+                    <p>Soy un creativo multidisciplinar actualmente cursando la carrera de **Diseño Gráfico y Animación**. Mi enfoque combina la rigurosidad técnica del diseño con la libertad expresiva de la animación indie.</p>
+                    <p>Como **CEO de Star Studios**, lidero equipos creativos para transformar ideas abstractas en realidades visuales. Mi trabajo no solo se limita a la creación de arte, sino a la **dirección integral**, asegurando que cada fotograma cumpla con una visión narrativa coherente.</p>
+                    <p>Me especializo en el análisis audiovisual y la construcción de mundos, desde el diseño de personajes en "I don't wanna be a dungeon creature" hasta la gestión de cortometrajes independientes y el desarrollo de cómics.</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <h4>Estudios</h4>
+                        <p>Diseño Gráfico & Animación</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Liderazgo</h4>
+                        <p>CEO de Star Studios</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Especialidad</h4>
+                        <p>Dirección Creativa</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Repertorio</h4>
+                        <p>Series, Cómics y Cortos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comisiones" class="section-padding">
+        <div class="section-header">
+            <h2>Servicios Profesionales</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="art-grid">
+            <div class="art-item" style="padding: 2rem; text-align: center;">
+                <h3 style="color: var(--accent-gold);">Dirección de Arte</h3>
+                <p>Supervisión visual para proyectos de animación y juegos indie.</p>
+            </div>
+            <div class="art-item" style="padding: 2rem; text-align: center;">
+                <h3 style="color: var(--accent-gold);">Concept Art</h3>
+                <p>Diseño de personajes, props y entornos para narrativa visual.</p>
+            </div>
+            <div class="art-item" style="padding: 2rem; text-align: center;">
+                <h3 style="color: var(--accent-gold);">Diseño Gráfico</h3>
+                <p>Branding, identidad visual y diseño editorial profesional.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="cta-section">
+        <h2>¿Tienes un proyecto en mente?</h2>
+        <p>Estoy disponible para colaboraciones, dirección de proyectos y comisiones de arte personalizadas.</p>
+        <a href="mailto:tuemail@ejemplo.com" class="btn-gold">Enviar Mensaje Directo</a>
+    </section>
+
+    <footer>
+        <p>Anyelo Dalton | CEO Star Studios | © 2026</p>
+        <div style="margin-top: 1rem;">
+            <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">Instagram</a>
+            <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">YouTube</a>
+            <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">LinkedIn</a>
+        </div>
+    </footer>
+
+    <script>
+        // Animación suave de scroll
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simulación de filtros de portafolio
+        const filters = document.querySelectorAll('.filter-btn');
+        filters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filters.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                // Aquí podrías añadir lógica para ocultar/mostrar elementos
+            });
+        });
+    </script>
+</body>
+</html>
