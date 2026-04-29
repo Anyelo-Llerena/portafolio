@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identidad & Branding | Anyelo Dalton</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #fdf8e6;
+            --paper-dark: #f0e9d1;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #ffffff;
+            --brand-dark: #1c1c22;
+            --brand-accent: #c49a45;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.7; }
+        h1,h2,h3,h4 { font-family: 'Fredoka', sans-serif; }
+
+        header {
+            background: var(--brand-dark);
+            padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-name { font-size: 1.3rem; font-weight: 600; color: var(--brand-accent); line-height: 1; }
+        .logo-studio { font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.4rem; border-radius: 30px;
+            background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.12);
+            text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--brand-accent); color: var(--brand-dark); border-color: var(--brand-accent); }
+
+        /* HERO */
+        .project-hero {
+            background: var(--brand-dark);
+            padding: 8rem 5% 6rem;
+            position: relative; overflow: hidden;
+        }
+        /* Patrón geométrico de fondo */
+        .project-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(45deg, rgba(196,154,69,0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(196,154,69,0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(196,154,69,0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(196,154,69,0.05) 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+        .hero-tag {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--brand-accent);
+            margin-bottom: 1.2rem; display: block;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.0; margin-bottom: 1.5rem; color: white;
+        }
+        .project-hero h1 span { color: var(--brand-accent); }
+        .project-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 600px; margin-bottom: 3rem; }
+
+        /* SERVICIOS RÁPIDOS */
+        .quick-services {
+            display: flex; gap: 1rem; flex-wrap: wrap;
+        }
+        .qsvc {
+            padding: 0.7rem 1.4rem; border-radius: 10px;
+            background: rgba(196,154,69,0.12); color: var(--brand-accent);
+            border: 1px solid rgba(196,154,69,0.25);
+            font-size: 0.85rem; font-weight: 700;
+        }
+
+        /* CONTENIDO */
+        .content-wrap { max-width: 1200px; margin: 0 auto; }
+
+        /* SOBRE EL TRABAJO */
+        .intro-section {
+            padding: 5rem 5%;
+            background: var(--paper-bg);
+        }
+        .section-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent-gold);
+            margin-bottom: 0.6rem; display: block;
+        }
+        .intro-section h2 { font-size: 2rem; color: var(--secondary-green); margin-bottom: 1rem; }
+        .intro-section p { color: var(--text-muted); font-size: 1.02rem; max-width: 720px; margin-bottom: 1rem; }
+
+        /* PROCESO */
+        .process-section { padding: 5rem 5%; background: var(--white); }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0; margin-top: 2.5rem;
+            border: 1px solid var(--paper-dark); border-radius: 16px; overflow: hidden;
+        }
+        .step {
+            padding: 2rem 1.5rem;
+            border-right: 1px solid var(--paper-dark);
+            transition: 0.3s;
+        }
+        .step:last-child { border-right: none; }
+        .step:hover { background: var(--paper-bg); }
+        .step-num {
+            font-family: 'Fredoka', sans-serif; font-size: 2.5rem;
+            color: var(--paper-dark); line-height: 1; margin-bottom: 0.5rem; display: block;
+        }
+        .step h4 { font-size: 1rem; color: var(--secondary-green); margin-bottom: 0.3rem; }
+        .step p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* PROYECTOS */
+        .projects-section { padding: 5rem 5%; background: var(--paper-bg); }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .proj-card {
+            background: var(--white);
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            transition: 0.35s;
+        }
+        .proj-card:hover { transform: translateY(-8px); box-shadow: 0 16px 35px rgba(0,0,0,0.08); }
+        .proj-thumb {
+            height: 180px; background: var(--paper-bg);
+            display: flex; align-items: center; justify-content: center;
+            border-bottom: 3px solid var(--accent-gold); font-size: 3rem;
+        }
+        .proj-body { padding: 1.5rem; }
+        .proj-cat { font-size: 0.72rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; display: block; }
+        .proj-body h3 { font-size: 1.15rem; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .proj-body p { font-size: 0.88rem; color: var(--text-muted); }
+        .proj-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+        .ptag {
+            font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.7rem;
+            border-radius: 20px; background: var(--paper-bg);
+            color: var(--text-muted); text-transform: uppercase;
+        }
+
+        /* PLACEHOLDER */
+        .pnote {
+            background: white; border: 2px dashed var(--paper-dark);
+            border-radius: 20px; padding: 4rem 2rem; text-align: center; margin-top: 3rem;
+        }
+        .pnote .pn-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+        .pnote h3 { font-size: 1.5rem; color: var(--secondary-green); margin-bottom: 0.6rem; }
+        .pnote p { color: var(--text-muted); max-width: 440px; margin: 0 auto; font-size: 0.95rem; }
+
+        /* CTA */
+        .cta-section { padding: 5rem 5%; background: var(--brand-dark); text-align: center; }
+        .cta-section h2 { font-size: 2rem; color: white; margin-bottom: 0.8rem; }
+        .cta-section p { color: rgba(255,255,255,0.5); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .btn-gold {
+            display: inline-block; padding: 0.9rem 2.4rem;
+            background: var(--brand-accent); color: var(--brand-dark);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+        }
+        .btn-gold:hover { opacity: 0.9; transform: scale(1.04); }
+        .btn-ghost {
+            display: inline-block; padding: 0.9rem 2.4rem;
+            border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+            margin-left: 1rem;
+        }
+        .btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.5); }
+
+        footer {
+            padding: 3rem 5%; background: #111;
+            text-align: center; color: rgba(255,255,255,0.25); font-size: 0.83rem;
+        }
+        footer a { color: var(--brand-accent); text-decoration: none; }
+
+        @media(max-width:700px) {
+            .process-steps { grid-template-columns: 1fr 1fr; }
+            .step { border-right: 1px solid var(--paper-dark); border-bottom: 1px solid var(--paper-dark); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+    </header>
+
+    <section class="project-hero">
+        <div class="hero-inner">
+            <span class="hero-tag">🎨 Diseño Gráfico · Branding · Identidad Visual</span>
+            <h1>Identidad<br><span>&</span> Branding</h1>
+            <p>De la idea al símbolo. Diseño sistemas visuales que dan carácter y coherencia a marcas, proyectos y estudios.</p>
+            <div class="quick-services">
+                <span class="qsvc">Logotipos</span>
+                <span class="qsvc">Identidad Visual</span>
+                <span class="qsvc">Diseño Editorial</span>
+                <span class="qsvc">Packaging</span>
+                <span class="qsvc">Branding Completo</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-wrap">
+
+        <div class="intro-section">
+            <span class="section-label">El Enfoque</span>
+            <h2>Diseño con Intención</h2>
+            <p>
+                El diseño gráfico es comunicación antes que decoración. Cada decisión tipográfica, cada paleta
+                de color, cada forma tiene una razón de ser ligada al carácter de la marca o proyecto que representa.
+            </p>
+            <p>
+                Trabajo en identidades visuales completas, piezas de diseño editorial (publicaciones, revistas,
+                libros) y packaging — con especial interés en proyectos creativos, estudios independientes
+                y marcas con personalidad propia.
+            </p>
+        </div>
+
+        <div class="process-section">
+            <span class="section-label">Metodología</span>
+            <h2>El Proceso de Diseño</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <span class="step-num">01</span>
+                    <h4>Briefing</h4>
+                    <p>Entender el proyecto, su audiencia, sus valores y su contexto competitivo.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">02</span>
+                    <h4>Exploración</h4>
+                    <p>Referencias, moodboard, primeras ideas a mano y bocetos de concepto.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">03</span>
+                    <h4>Desarrollo</h4>
+                    <p>Vectorización, tipografía, paleta de color y sistema de marca digital.</p>
+                </div>
+                <div class="step">
+                    <span class="step-num">04</span>
+                    <h4>Entrega</h4>
+                    <p>Archivos finales, guía de marca y aplicaciones sobre mockups reales.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="projects-section">
+            <span class="section-label">Proyectos</span>
+            <h2>Casos de Diseño</h2>
+
+            <div class="projects-grid">
+                <!-- NUTRAX: proyecto real mencionado -->
+                <div class="proj-card">
+                    <div class="proj-thumb">📦</div>
+                    <div class="proj-body">
+                        <span class="proj-cat">Packaging · Identidad</span>
+                        <h3>NUTRAX</h3>
+                        <p>Diseño de identidad visual y packaging para el proyecto NUTRAX. Agrega aquí más detalles sobre el proyecto.</p>
+                        <div class="proj-tags">
+                            <span class="ptag">Packaging</span>
+                            <span class="ptag">Logotipo</span>
+                            <span class="ptag">Editorial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-thumb">🏷️</div>
+                    <div class="proj-body">
+                        <span class="proj-cat">Identidad de Marca</span>
+                        <h3>Proyecto 02 · Por definir</h3>
+                        <p>Agrega aquí el nombre y descripción de otro proyecto de branding o identidad visual.</p>
+                        <div class="proj-tags">
+                            <span class="ptag">Branding</span>
+                            <span class="ptag">Tipografía</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proj-card">
+                    <div class="proj-thumb">📰</div>
+                    <div class="proj-body">
+                        <span class="proj-cat">Diseño Editorial</span>
+                        <h3>Proyecto 03 · Por definir</h3>
+                        <p>Publicación, revista, dossier u otra pieza de diseño editorial. Agrega tu trabajo real aquí.</p>
+                        <div class="proj-tags">
+                            <span class="ptag">Editorial</span>
+                            <span class="ptag">Maquetación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pnote">
+                <span class="pn-icon">🎨</span>
+                <h3>Más proyectos próximamente</h3>
+                <p>El portafolio de diseño se irá completando con nuevos casos de trabajo real.</p>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>¿Tu marca necesita identidad?</h2>
+            <p>Estudio, empresa, proyecto indie o personal — diseño el sistema visual que lo representa.</p>
+            <a href="index.html#contacto-full" class="btn-gold">Pedir cotización →</a>
+            <a href="index.html#repertorio" class="btn-ghost">Ver más proyectos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Anyelo Dalton · Star Studios · <a href="index.html">Volver al inicio</a></p>
+    </footer>
+</body>
+</html>

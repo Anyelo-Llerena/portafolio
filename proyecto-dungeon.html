@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I don't wanna be a dungeon creature | Star Studios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #fdf8e6;
+            --paper-dark: #f0e9d1;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #ffffff;
+            /* Colores propios del proyecto */
+            --dungeon-dark: #0d0d1a;
+            --dungeon-mid: #1a1a3a;
+            --dungeon-green: #1e3d2a;
+            --dungeon-accent: #7fff8a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--dungeon-dark); color: #e8e8f0; line-height: 1.7; }
+        h1,h2,h3,h4 { font-family: 'Fredoka', sans-serif; }
+
+        /* NAV */
+        header {
+            background: rgba(13,13,26,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-name { font-size: 1.3rem; font-weight: 600; color: var(--dungeon-accent); line-height: 1; }
+        .logo-studio { font-size: 0.7rem; color: rgba(255,255,255,0.45); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.4rem; border-radius: 30px;
+            background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.7);
+            text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .back-btn:hover { background: var(--dungeon-green); color: var(--dungeon-accent); border-color: var(--dungeon-accent); }
+
+        /* HERO */
+        .project-hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 6rem 5% 5rem;
+            background:
+                linear-gradient(to top, var(--dungeon-dark) 0%, rgba(13,13,26,0.4) 60%, transparent 100%),
+                linear-gradient(135deg, #0d0d1a 0%, #1a2a1a 40%, #0d1a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-deco {
+            position: absolute;
+            inset: 0;
+            background-image:
+                radial-gradient(ellipse 60% 50% at 70% 40%, rgba(30,61,42,0.5) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 30% at 30% 60%, rgba(127,255,138,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        /* Grid de "gemas" decorativas */
+        .hero-grid {
+            position: absolute; inset: 0; pointer-events: none;
+            background-image:
+                linear-gradient(rgba(127,255,138,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(127,255,138,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .hero-tag {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--dungeon-accent);
+            margin-bottom: 1.2rem; display: block; opacity: 0.9;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.2rem, 6vw, 5rem);
+            line-height: 1.05;
+            max-width: 800px;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        .project-hero h1 em {
+            font-style: italic;
+            color: var(--dungeon-accent);
+        }
+        .hero-meta {
+            display: flex; gap: 2rem; flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .hero-meta-item { font-size: 0.88rem; color: rgba(255,255,255,0.55); }
+        .hero-meta-item strong { color: rgba(255,255,255,0.85); display: block; font-size: 1rem; margin-bottom: 0.1rem; }
+
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.45rem 1.1rem; border-radius: 30px;
+            background: rgba(127,255,138,0.12); color: var(--dungeon-accent);
+            font-size: 0.82rem; font-weight: 700; border: 1px solid rgba(127,255,138,0.25);
+        }
+        .status-badge::before {
+            content: ''; width: 7px; height: 7px; border-radius: 50%;
+            background: var(--dungeon-accent); animation: blink 1.4s infinite;
+        }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+        /* SECTIONS */
+        .project-section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
+
+        .section-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--dungeon-accent);
+            margin-bottom: 0.8rem; display: block;
+        }
+        .project-section h2 { font-size: 2rem; color: white; margin-bottom: 1.5rem; }
+
+        .synopsis-text { font-size: 1.05rem; color: rgba(255,255,255,0.7); max-width: 750px; }
+        .synopsis-text p { margin-bottom: 1.2rem; }
+
+        /* ROLES GRID */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        .role-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 1.5rem;
+            transition: 0.3s;
+        }
+        .role-card:hover { border-color: var(--dungeon-accent); background: rgba(127,255,138,0.05); }
+        .role-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+        .role-card h4 { font-size: 1rem; color: white; margin-bottom: 0.3rem; }
+        .role-card p { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+
+        /* PREVIEW ZONE */
+        .preview-zone {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 20px;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .preview-zone .pz-icon { font-size: 4rem; margin-bottom: 1.2rem; display: block; opacity: 0.5; }
+        .preview-zone p { color: rgba(255,255,255,0.35); font-style: italic; font-size: 0.95rem; }
+
+        /* DIVIDER */
+        .section-divider {
+            border: none;
+            border-top: 1px solid rgba(255,255,255,0.07);
+            margin: 0 5%;
+        }
+
+        /* CTA */
+        .project-cta {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+        .project-cta h2 { font-size: 1.8rem; color: white; margin-bottom: 0.8rem; }
+        .project-cta p { color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+
+        .btn-accent {
+            display: inline-block; padding: 0.9rem 2.4rem;
+            background: var(--dungeon-accent); color: var(--dungeon-dark);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+        }
+        .btn-accent:hover { transform: scale(1.05); opacity: 0.9; }
+        .btn-ghost {
+            display: inline-block; padding: 0.9rem 2.4rem;
+            background: transparent; color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+            margin-left: 1rem;
+        }
+        .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: white; }
+
+        footer {
+            padding: 3rem 5%; background: rgba(0,0,0,0.4);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center; color: rgba(255,255,255,0.3); font-size: 0.83rem;
+        }
+        footer a { color: var(--dungeon-accent); text-decoration: none; }
+
+        @media (max-width: 700px) {
+            .hero-meta { gap: 1.2rem; }
+            .btn-ghost { margin-left: 0; margin-top: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="project-hero">
+        <div class="hero-deco"></div>
+        <div class="hero-grid"></div>
+        <span class="hero-tag">⚔️ Proyecto Insignia · Star Studios · Serie Animada</span>
+        <h1>I don't wanna be a<br><em>dungeon creature</em></h1>
+        <div class="hero-meta">
+            <div class="hero-meta-item"><strong>Formato</strong>Serie Animada 2D</div>
+            <div class="hero-meta-item"><strong>Rol</strong>Dirección General</div>
+            <div class="hero-meta-item"><strong>Estudio</strong>Star Studios</div>
+            <div class="hero-meta-item"><strong>Año</strong>En desarrollo · 2025–2026</div>
+        </div>
+        <span class="status-badge">En Producción</span>
+    </section>
+
+    <!-- SINOPSIS -->
+    <div class="project-section">
+        <span class="section-label">Sinopsis</span>
+        <h2>El Proyecto</h2>
+        <div class="synopsis-text">
+            <p>
+                <em>"I don't wanna be a dungeon creature"</em> es el proyecto narrativo principal de Star Studios.
+                Una historia que explora la identidad, el destino y la voluntad de un personaje que se niega a
+                aceptar el rol que el mundo le ha asignado dentro de un universo de mazmorra y fantasía oscura.
+            </p>
+            <p>
+                La serie combina animación 2D tradicional con técnicas de narrativa visual cinematográfica,
+                construyendo un mundo lleno de personajes complejos, tensión dramática y un diseño visual
+                inconfundible forjado desde cero por Anyelo Dalton y el equipo de Star Studios.
+            </p>
+            <p style="color:rgba(255,255,255,0.35); font-style:italic;">
+                [Amplía aquí con tu sinopsis real, el mundo, los personajes principales, el tono, etc.]
+            </p>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- ROLES Y RESPONSABILIDADES -->
+    <div class="project-section">
+        <span class="section-label">Mi Rol en el Proyecto</span>
+        <h2>Dirección Integral</h2>
+        <div class="roles-grid">
+            <div class="role-card">
+                <span class="role-icon">🎬</span>
+                <h4>Director Creativo</h4>
+                <p>Visión global de la serie, tono visual y narrativo, coherencia de universo.</p>
+            </div>
+            <div class="role-card">
+                <span class="role-icon">✍️</span>
+                <h4>Guionista</h4>
+                <p>Escritura de guiones, diálogos, arcos de personaje y escaleta de episodios.</p>
+            </div>
+            <div class="role-card">
+                <span class="role-icon">🎨</span>
+                <h4>Diseño de Personajes</h4>
+                <p>Concept art, diseño de producción, hojas de modelo y paletas de color.</p>
+            </div>
+            <div class="role-card">
+                <span class="role-icon">🌍</span>
+                <h4>World-Building</h4>
+                <p>Construcción del lore, reglas del universo, mapa del mundo y facciones.</p>
+            </div>
+            <div class="role-card">
+                <span class="role-icon">🖊️</span>
+                <h4>Supervisión de Animación</h4>
+                <p>Storyboards, animáticas y supervisión del pipeline de animación 2D.</p>
+            </div>
+            <div class="role-card">
+                <span class="role-icon">📋</span>
+                <h4>Gestión de Producción</h4>
+                <p>Coordinación de equipo, calendarios, entregas y recursos de Star Studios.</p>
+            </div>
+        </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- GALERÍA / PREVIEWS -->
+    <div class="project-section">
+        <span class="section-label">Material Visual</span>
+        <h2>Arte & Producción</h2>
+        <div class="preview-zone">
+            <span class="pz-icon">🎨</span>
+            <p>Concept art, storyboards y frames de animación se mostrarán aquí.<br>
+            Agrega tus imágenes reemplazando esta zona con tags &lt;img&gt;.</p>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="project-cta">
+        <h2>¿Te interesa este proyecto?</h2>
+        <p>Colaboraciones, consultas de producción o simplemente quieres saber más — escríbeme.</p>
+        <a href="index.html#contacto-full" class="btn-accent">Contactar →</a>
+        <a href="index.html#repertorio" class="btn-ghost">Ver más proyectos</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Anyelo Dalton · Star Studios · <a href="index.html">Volver al inicio</a></p>
+    </footer>
+
+</body>
+</html>

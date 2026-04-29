@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Cuaderno de Dalton | Bocetos & Práctica</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #f5f0e0;
+            --paper-dark: #e8dfc8;
+            --paper-lines: #ddd4b8;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #fffdf5;
+            --pencil: #6b5b45;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--paper-bg); color: var(--text-dark); line-height: 1.7; }
+        h1,h2,h3,h4 { font-family: 'Fredoka', sans-serif; }
+
+        header {
+            background: var(--white);
+            border-bottom: 2px solid var(--paper-lines);
+            padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-name { font-size: 1.3rem; font-weight: 600; color: var(--primary-green); line-height: 1; }
+        .logo-studio { font-size: 0.7rem; color: var(--accent-gold); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.4rem; border-radius: 30px;
+            background: var(--paper-dark); color: var(--text-muted);
+            text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--primary-green); color: white; }
+
+        /* HERO — aspecto de cuaderno */
+        .project-hero {
+            padding: 6rem 5% 4rem;
+            background: var(--white);
+            border-bottom: 2px solid var(--paper-lines);
+            position: relative;
+            overflow: hidden;
+        }
+        /* Líneas de cuaderno */
+        .project-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: repeating-linear-gradient(
+                transparent, transparent 31px,
+                var(--paper-lines) 31px, var(--paper-lines) 32px
+            );
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        /* Margen rojo del cuaderno */
+        .project-hero::after {
+            content: '';
+            position: absolute; top: 0; left: 13%;
+            width: 2px; height: 100%;
+            background: rgba(180, 60, 60, 0.25);
+        }
+        .hero-inner { position: relative; z-index: 1; padding-left: 8%; }
+        .hero-tag {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent-gold);
+            margin-bottom: 1.2rem; display: block;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.05; margin-bottom: 0.5rem; color: var(--secondary-green);
+        }
+        .project-hero h1 em {
+            color: var(--pencil); font-style: italic;
+        }
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text-muted);
+            max-width: 580px; margin-bottom: 2.5rem;
+        }
+        .hero-pills { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .pill {
+            padding: 0.4rem 1.1rem; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700;
+            background: var(--paper-dark); color: var(--text-muted);
+            border: 1.5px solid var(--paper-lines);
+        }
+        .pill.gold { background: var(--accent-gold); color: white; border-color: var(--accent-gold); }
+
+        /* CONTENIDO */
+        .content-wrap { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent-gold);
+            margin-bottom: 0.6rem; display: block;
+        }
+        .block h2 { font-size: 2rem; color: var(--secondary-green); margin-bottom: 1rem; }
+        .block p { color: var(--text-muted); font-size: 1.02rem; margin-bottom: 1rem; max-width: 720px; }
+
+        hr.divider { border: none; border-top: 2px dashed var(--paper-lines); margin: 4rem 0; }
+
+        /* CATEGORÍAS DE BOCETO */
+        .sketch-cats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 1.5rem; margin-top: 2rem;
+        }
+        .sketch-cat {
+            background: var(--white);
+            border: 2px solid var(--paper-lines);
+            border-radius: 14px; padding: 2rem 1.5rem;
+            transition: 0.3s; cursor: default;
+        }
+        .sketch-cat:hover { border-color: var(--accent-gold); transform: rotate(-1deg) translateY(-4px); }
+        .sc-icon { font-size: 2.2rem; margin-bottom: 0.8rem; display: block; }
+        .sketch-cat h3 { font-size: 1.05rem; color: var(--secondary-green); margin-bottom: 0.3rem; }
+        .sketch-cat p { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* GRID DE BOCETOS (placeholder) */
+        .sketch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem; margin-top: 3rem;
+        }
+        .sketch-card {
+            background: var(--white);
+            border: 2px solid var(--paper-lines);
+            border-radius: 12px; overflow: hidden;
+            transition: 0.35s;
+        }
+        .sketch-card:hover { transform: rotate(0.8deg) translateY(-5px); box-shadow: 4px 8px 20px rgba(0,0,0,0.08); }
+        .sketch-thumb {
+            height: 200px; background: var(--paper-bg);
+            display: flex; align-items: center; justify-content: center;
+            border-bottom: 2px solid var(--paper-lines);
+            font-size: 3rem; color: rgba(0,0,0,0.1);
+        }
+        .sketch-info { padding: 1.2rem; }
+        .sketch-tag { font-size: 0.7rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; display: block; }
+        .sketch-info h4 { font-size: 1rem; color: var(--text-dark); }
+
+        /* PLACEHOLDER NOTICE */
+        .pnote {
+            background: var(--white); border: 2px dashed var(--paper-lines);
+            border-radius: 20px; padding: 4rem 2rem; text-align: center; margin-top: 3rem;
+        }
+        .pnote .pn-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+        .pnote h3 { font-size: 1.5rem; color: var(--secondary-green); margin-bottom: 0.6rem; }
+        .pnote p { color: var(--text-muted); max-width: 440px; margin: 0 auto; font-size: 0.95rem; }
+
+        /* CTA */
+        .cta-strip {
+            background: var(--secondary-green); color: white;
+            border-radius: 20px; padding: 3.5rem; text-align: center; margin-top: 4rem;
+        }
+        .cta-strip h2 { font-size: 1.8rem; margin-bottom: 0.6rem; }
+        .cta-strip p { color: rgba(255,255,255,0.65); margin-bottom: 2rem; }
+        .btn-gold {
+            display: inline-block; padding: 0.85rem 2.2rem;
+            background: var(--accent-gold); color: white;
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+        }
+        .btn-gold:hover { background: #b0893b; transform: scale(1.04); }
+        .btn-ghost {
+            display: inline-block; padding: 0.85rem 2.2rem;
+            border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.65);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+            margin-left: 1rem;
+        }
+        .btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.5); }
+
+        footer {
+            padding: 3rem 5%;
+            background: var(--secondary-green);
+            text-align: center; color: rgba(255,255,255,0.4); font-size: 0.83rem;
+        }
+        footer a { color: var(--accent-gold); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+    </header>
+
+    <section class="project-hero">
+        <div class="hero-inner">
+            <span class="hero-tag">📒 Bocetos · Práctica · Proceso Creativo</span>
+            <h1>El Cuaderno<br><em>de Dalton</em></h1>
+            <p class="hero-sub">El espacio más honesto del artista — estudios del natural, anatomía, exploración de estilos y el proceso crudo antes de la obra final.</p>
+            <div class="hero-pills">
+                <span class="pill gold">Dibujo Rápido</span>
+                <span class="pill">Anatomía</span>
+                <span class="pill">Personajes</span>
+                <span class="pill">Gestos</span>
+                <span class="pill">Exploración</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-wrap">
+
+        <div class="block">
+            <span class="section-label">El Cuaderno</span>
+            <h2>Por qué el boceto importa</h2>
+            <p>
+                El cuaderno de bocetos es donde todo empieza. Sin filtros, sin presión del resultado — solo
+                la mano aprendiendo a ver. Aquí documento estudios anatómicos, gestos rápidos del natural,
+                experimentos de composición y los primeros dibujos de personajes que luego se convertirán
+                en producción real.
+            </p>
+            <p>
+                Es un registro de proceso: cada trazo torpe o certero forma parte del aprendizaje continuo
+                de un artista que no deja de estudiar.
+            </p>
+        </div>
+
+        <hr class="divider">
+
+        <!-- CATEGORÍAS -->
+        <span class="section-label">Lo que encontrarás aquí</span>
+        <h2 style="font-family:'Fredoka',sans-serif;font-size:2rem;color:var(--secondary-green);margin-bottom:0.3rem;">Categorías de Práctica</h2>
+        <div class="sketch-cats">
+            <div class="sketch-cat">
+                <span class="sc-icon">🦴</span>
+                <h3>Anatomía & Figura</h3>
+                <p>Estudio del cuerpo humano, proporciones, perspectiva y poses.</p>
+            </div>
+            <div class="sketch-cat">
+                <span class="sc-icon">😶</span>
+                <h3>Expresiones & Caras</h3>
+                <p>Emociones, tipos faciales, gestos y lenguaje corporal.</p>
+            </div>
+            <div class="sketch-cat">
+                <span class="sc-icon">🧙</span>
+                <h3>Diseño de Personajes</h3>
+                <p>Bocetos de personajes nuevos, variaciones, exploración de silueta.</p>
+            </div>
+            <div class="sketch-cat">
+                <span class="sc-icon">🌿</span>
+                <h3>Entornos & Props</h3>
+                <p>Estudios de naturaleza, arquitectura, objetos y escenarios rápidos.</p>
+            </div>
+            <div class="sketch-cat">
+                <span class="sc-icon">✏️</span>
+                <h3>Dibujo Gestual</h3>
+                <p>Líneas rápidas de 30 segundos a 5 minutos — capturar la esencia del movimiento.</p>
+            </div>
+            <div class="sketch-cat">
+                <span class="sc-icon">🔬</span>
+                <h3>Experimentos de Estilo</h3>
+                <p>Pruebas de tinta, sombras, texturas y referencias de otros artistas.</p>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- GALERÍA BOCETOS -->
+        <span class="section-label">Páginas del Cuaderno</span>
+        <h2 style="font-family:'Fredoka',sans-serif;font-size:2rem;color:var(--secondary-green);margin-bottom:0.3rem;">Bocetos Recientes</h2>
+
+        <div class="sketch-grid">
+            <div class="sketch-card">
+                <div class="sketch-thumb">✏️</div>
+                <div class="sketch-info">
+                    <span class="sketch-tag">Anatomía</span>
+                    <h4>Estudio de figura 01</h4>
+                </div>
+            </div>
+            <div class="sketch-card">
+                <div class="sketch-thumb">✏️</div>
+                <div class="sketch-info">
+                    <span class="sketch-tag">Personaje</span>
+                    <h4>Diseño de personaje 01</h4>
+                </div>
+            </div>
+            <div class="sketch-card">
+                <div class="sketch-thumb">✏️</div>
+                <div class="sketch-info">
+                    <span class="sketch-tag">Expresiones</span>
+                    <h4>Hoja de expresiones 01</h4>
+                </div>
+            </div>
+            <div class="sketch-card">
+                <div class="sketch-thumb">✏️</div>
+                <div class="sketch-info">
+                    <span class="sketch-tag">Entorno</span>
+                    <h4>Boceto de escenario 01</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="pnote">
+            <span class="pn-icon">📒</span>
+            <h3>El cuaderno está llenándose</h3>
+            <p>Escaneos y fotos de bocetos se irán subiendo aquí de forma regular. ¡Vuelve pronto!</p>
+        </div>
+
+        <div class="cta-strip">
+            <h2>¿Te interesa el proceso creativo?</h2>
+            <p>Sigo mi proceso en redes sociales — sígueme para ver bocetos y WIPs en tiempo real.</p>
+            <a href="index.html#contacto-full" class="btn-gold">Ver mis redes →</a>
+            <a href="index.html#repertorio" class="btn-ghost">Ver más proyectos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Anyelo Dalton · Star Studios · <a href="index.html">Volver al inicio</a></p>
+    </footer>
+</body>
+</html>

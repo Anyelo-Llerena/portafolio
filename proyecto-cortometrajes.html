@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortometrajes Star Studios | Anyelo Dalton</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #fdf8e6;
+            --paper-dark: #f0e9d1;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #ffffff;
+            --film-dark: #0a0a0f;
+            --film-mid: #141420;
+            --film-accent: #e8b84b;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--film-dark); color: #ddd; line-height: 1.7; }
+        h1,h2,h3,h4 { font-family: 'Fredoka', sans-serif; }
+
+        header {
+            background: rgba(10,10,15,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-name { font-size: 1.3rem; font-weight: 600; color: var(--film-accent); line-height: 1; }
+        .logo-studio { font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.4rem; border-radius: 30px;
+            background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.65);
+            border: 1px solid rgba(255,255,255,0.1);
+            text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--film-accent); color: var(--film-dark); border-color: var(--film-accent); }
+
+        /* HERO */
+        .project-hero {
+            min-height: 85vh;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 6rem 5% 5rem;
+            background: linear-gradient(to top, var(--film-dark) 0%, rgba(10,10,15,0.3) 70%, transparent 100%),
+                        linear-gradient(160deg, #0a0a0f 0%, #1a1208 50%, #0a0f1a 100%);
+            position: relative; overflow: hidden;
+        }
+        /* Tira de película decorativa */
+        .film-strip {
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 60px;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center;
+            padding: 0 2rem; gap: 1.5rem; overflow: hidden;
+        }
+        .film-hole {
+            width: 28px; height: 28px; border-radius: 4px;
+            border: 2px solid rgba(255,255,255,0.1);
+            flex-shrink: 0;
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 800px; }
+        .hero-tag {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--film-accent);
+            margin-bottom: 1.2rem; display: block;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            line-height: 1.05; margin-bottom: 1.5rem; color: white;
+        }
+        .project-hero p { font-size: 1.1rem; color: rgba(255,255,255,0.6); max-width: 600px; margin-bottom: 2.5rem; }
+        .hero-stats {
+            display: flex; gap: 3rem; flex-wrap: wrap;
+        }
+        .hstat { border-left: 3px solid var(--film-accent); padding-left: 1rem; }
+        .hstat strong { display: block; font-size: 1.8rem; color: var(--film-accent); font-family: 'Fredoka', sans-serif; }
+        .hstat span { font-size: 0.82rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* SECCIONES */
+        .section-wrap { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--film-accent);
+            margin-bottom: 0.6rem; display: block;
+        }
+        .section-wrap h2 { font-size: 2rem; color: white; margin-bottom: 1.5rem; }
+        .section-text { color: rgba(255,255,255,0.6); font-size: 1.02rem; max-width: 720px; }
+        .section-text p { margin-bottom: 1.1rem; }
+
+        hr.divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin: 0 5%; }
+
+        /* FILMES */
+        .films-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .film-card {
+            background: var(--film-mid);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px; overflow: hidden;
+            transition: 0.35s;
+        }
+        .film-card:hover { border-color: var(--film-accent); transform: translateY(-6px); }
+        .film-thumb {
+            height: 180px;
+            background: rgba(255,255,255,0.04);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem; color: rgba(255,255,255,0.1);
+            position: relative; overflow: hidden;
+        }
+        .play-icon {
+            position: absolute;
+            width: 52px; height: 52px; border-radius: 50%;
+            background: var(--film-accent); color: var(--film-dark);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; opacity: 0; transition: 0.3s;
+            padding-left: 4px;
+        }
+        .film-card:hover .play-icon { opacity: 1; }
+        .film-body { padding: 1.5rem; }
+        .film-year { font-size: 0.72rem; color: var(--film-accent); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0.3rem; }
+        .film-body h3 { font-size: 1.15rem; color: white; margin-bottom: 0.5rem; }
+        .film-body p { font-size: 0.88rem; color: rgba(255,255,255,0.45); }
+        .film-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1rem; }
+        .ftag {
+            font-size: 0.72rem; font-weight: 700; padding: 0.25rem 0.7rem;
+            border-radius: 20px; border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* PLACEHOLDER */
+        .pnote {
+            background: rgba(255,255,255,0.03); border: 2px dashed rgba(255,255,255,0.1);
+            border-radius: 20px; padding: 4rem 2rem; text-align: center; margin-top: 3rem;
+        }
+        .pnote .pn-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; opacity: 0.4; }
+        .pnote h3 { font-size: 1.4rem; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem; }
+        .pnote p { color: rgba(255,255,255,0.3); font-size: 0.93rem; }
+
+        /* CTA */
+        .cta-strip {
+            background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.2);
+            border-radius: 20px; padding: 3.5rem; text-align: center; margin-top: 4rem;
+        }
+        .cta-strip h2 { color: white; font-size: 1.8rem; margin-bottom: 0.6rem; }
+        .cta-strip p { color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+        .btn-gold {
+            display: inline-block; padding: 0.85rem 2.2rem;
+            background: var(--film-accent); color: var(--film-dark);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+        }
+        .btn-gold:hover { transform: scale(1.04); opacity: 0.9; }
+        .btn-ghost {
+            display: inline-block; padding: 0.85rem 2.2rem;
+            border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+            margin-left: 1rem;
+        }
+        .btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.45); }
+
+        footer {
+            padding: 3rem 5%; border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center; color: rgba(255,255,255,0.25); font-size: 0.83rem;
+        }
+        footer a { color: var(--film-accent); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+    </header>
+
+    <section class="project-hero">
+        <div class="film-strip">
+            <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+            <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+        </div>
+        <div class="hero-inner">
+            <span class="hero-tag">🎬 Producción Audiovisual · Star Studios · Dirección</span>
+            <h1>Cortometrajes<br>Star Studios</h1>
+            <p>Pequeñas historias con grandes ambiciones. Cada corto es un laboratorio de lenguaje cinematográfico independiente.</p>
+            <div class="hero-stats">
+                <div class="hstat"><strong>+0</strong><span>Cortos publicados</span></div>
+                <div class="hstat"><strong>2D+</strong><span>Animación & live</span></div>
+                <div class="hstat"><strong>Indie</strong><span>Producción propia</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-wrap">
+        <span class="section-label">El Enfoque</span>
+        <h2>Cine Independiente de Animación</h2>
+        <div class="section-text">
+            <p>
+                Los cortometrajes de Star Studios son el espacio de experimentación audiovisual más libre
+                del estudio. Sin restricciones de formato, cada pieza prueba un recurso narrativo distinto:
+                el silencio, el plano secuencia, la música como motor dramático, o la textura visual como personaje.
+            </p>
+            <p>
+                Como director, guionista y animador principal, Anyelo Dalton supervisa cada fase de producción —
+                desde el concepto hasta el corte final — aplicando los principios del análisis audiovisual
+                en la construcción de cada plano.
+            </p>
+        </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="section-wrap">
+        <span class="section-label">Filmografía</span>
+        <h2>Cortometrajes & Piezas</h2>
+
+        <div class="films-grid">
+            <div class="film-card">
+                <div class="film-thumb">
+                    🎬
+                    <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="film-body">
+                    <p class="film-year">202X · Animación 2D</p>
+                    <h3>Título del Corto 01</h3>
+                    <p>Sinopsis breve del cortometraje. Duración, técnica, tema principal.</p>
+                    <div class="film-tags">
+                        <span class="ftag">Animación</span>
+                        <span class="ftag">Drama</span>
+                    </div>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-thumb">
+                    🎬
+                    <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="film-body">
+                    <p class="film-year">202X · Experimental</p>
+                    <h3>Título del Corto 02</h3>
+                    <p>Sinopsis breve del cortometraje. Duración, técnica, tema principal.</p>
+                    <div class="film-tags">
+                        <span class="ftag">Experimental</span>
+                        <span class="ftag">Abstracto</span>
+                    </div>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-thumb">
+                    🎬
+                    <div class="play-icon"><i class="fa-solid fa-play"></i></div>
+                </div>
+                <div class="film-body">
+                    <p class="film-year">En desarrollo</p>
+                    <h3>Proyecto Sin Título</h3>
+                    <p>Próxima producción de Star Studios — detalles por revelar.</p>
+                    <div class="film-tags">
+                        <span class="ftag">Próximamente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pnote">
+            <span class="pn-icon">🎞️</span>
+            <h3>Galería en construcción</h3>
+            <p>Los cortos finalizados y tráilers se publicarán aquí con enlace a YouTube.</p>
+        </div>
+
+        <div class="cta-strip">
+            <h2>¿Colaboramos en un proyecto audiovisual?</h2>
+            <p>Dirección, animación, storyboard — hablemos sobre lo que necesitas.</p>
+            <a href="index.html#contacto-full" class="btn-gold">Contactar →</a>
+            <a href="index.html#repertorio" class="btn-ghost">Ver más proyectos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Anyelo Dalton · Star Studios · <a href="index.html">Volver al inicio</a></p>
+    </footer>
+</body>
+</html>

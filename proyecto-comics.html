@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novelas Gráficas & Cómics | Anyelo Dalton</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-green: #3d633d;
+            --secondary-green: #2a472a;
+            --accent-gold: #c49a45;
+            --paper-bg: #fdf8e6;
+            --paper-dark: #f0e9d1;
+            --text-dark: #2d2a26;
+            --text-muted: #5c5953;
+            --white: #ffffff;
+            --ink: #1a1410;
+            --ink-mid: #2d2520;
+            --comic-red: #c0392b;
+            --comic-yellow: #f1c40f;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Quicksand', sans-serif; background: var(--paper-bg); color: var(--text-dark); line-height: 1.7; }
+        h1,h2,h3,h4 { font-family: 'Fredoka', sans-serif; }
+
+        header {
+            background: var(--ink);
+            padding: 1.2rem 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { text-decoration: none; display: flex; flex-direction: column; }
+        .logo-name { font-size: 1.3rem; font-weight: 600; color: var(--comic-yellow); line-height: 1; }
+        .logo-studio { font-size: 0.7rem; color: rgba(255,255,255,0.45); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.6rem 1.4rem; border-radius: 30px;
+            background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75);
+            text-decoration: none; font-weight: 700; font-size: 0.88rem; transition: 0.3s;
+        }
+        .back-btn:hover { background: var(--comic-red); color: white; }
+
+        /* HERO estilo portada de cómic */
+        .project-hero {
+            background: var(--ink);
+            color: white;
+            padding: 7rem 5% 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Tramas de puntos estilo halftone */
+        .project-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle, rgba(241,196,15,0.15) 1px, transparent 1px);
+            background-size: 22px 22px;
+            pointer-events: none;
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 750px; }
+        .hero-tag {
+            font-size: 0.78rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--comic-yellow);
+            margin-bottom: 1.2rem; display: block;
+        }
+        .project-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            line-height: 1.0; margin-bottom: 1.5rem; color: white;
+        }
+        .project-hero h1 span { color: var(--comic-red); }
+        .project-hero p {
+            font-size: 1.1rem; color: rgba(255,255,255,0.65); max-width: 600px; margin-bottom: 2rem;
+        }
+        .hero-pills { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .pill {
+            padding: 0.4rem 1rem; border-radius: 20px;
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .pill-red { background: var(--comic-red); color: white; }
+        .pill-yellow { background: var(--comic-yellow); color: var(--ink); }
+        .pill-outline { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.6); }
+
+        /* CONTENIDO */
+        .content-wrap { max-width: 1200px; margin: 0 auto; padding: 5rem 5%; }
+
+        .intro-block { margin-bottom: 4rem; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; color: var(--accent-gold);
+            margin-bottom: 0.6rem; display: block;
+        }
+        .intro-block h2 { font-size: 2rem; color: var(--secondary-green); margin-bottom: 1rem; }
+        .intro-block p { color: var(--text-muted); font-size: 1.03rem; margin-bottom: 1rem; max-width: 720px; }
+
+        /* TÉCNICAS */
+        .techniques-row {
+            display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;
+        }
+        .technique-tag {
+            padding: 0.5rem 1.2rem; border-radius: 30px;
+            background: var(--paper-dark); color: var(--text-muted);
+            font-size: 0.85rem; font-weight: 700;
+            border: 1px solid transparent; transition: 0.3s;
+        }
+        .technique-tag:hover { border-color: var(--accent-gold); color: var(--accent-gold); background: white; }
+
+        /* OBRAS GRID */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem; margin-top: 3rem;
+        }
+        .work-card {
+            background: var(--white);
+            border-radius: 16px; overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: 0.35s;
+        }
+        .work-card:hover { transform: translateY(-8px); box-shadow: 0 16px 35px rgba(0,0,0,0.1); }
+        .work-thumb {
+            height: 200px; background: var(--paper-dark);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3rem; color: rgba(0,0,0,0.15);
+            border-bottom: 3px solid var(--comic-red);
+        }
+        .work-info { padding: 1.5rem; }
+        .work-vol { font-size: 0.72rem; font-weight: 700; color: var(--comic-red); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+        .work-info h3 { font-size: 1.15rem; color: var(--ink); margin-bottom: 0.5rem; }
+        .work-info p { font-size: 0.88rem; color: var(--text-muted); }
+
+        /* PLACEHOLDER NOTICE */
+        .placeholder-notice {
+            background: white; border: 2px dashed var(--paper-dark);
+            border-radius: 20px; padding: 4rem 2rem; text-align: center; margin-top: 3rem;
+        }
+        .placeholder-notice .pn-icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
+        .placeholder-notice h3 { font-size: 1.5rem; color: var(--secondary-green); margin-bottom: 0.6rem; }
+        .placeholder-notice p { color: var(--text-muted); max-width: 440px; margin: 0 auto; font-size: 0.95rem; }
+
+        /* CTA */
+        .cta-strip {
+            background: var(--ink); color: white;
+            border-radius: 20px; padding: 3.5rem 3rem;
+            text-align: center; margin-top: 4rem;
+        }
+        .cta-strip h2 { font-size: 1.8rem; margin-bottom: 0.6rem; }
+        .cta-strip p { color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+        .btn-red {
+            display: inline-block; padding: 0.85rem 2.2rem;
+            background: var(--comic-red); color: white;
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+        }
+        .btn-red:hover { background: #a93226; transform: scale(1.04); }
+        .btn-ghost {
+            display: inline-block; padding: 0.85rem 2.2rem;
+            background: transparent; color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s; font-family: 'Quicksand', sans-serif;
+            margin-left: 1rem;
+        }
+        .btn-ghost:hover { color: white; border-color: rgba(255,255,255,0.5); }
+
+        footer {
+            padding: 3rem 5%; background: var(--ink);
+            text-align: center; color: rgba(255,255,255,0.3); font-size: 0.83rem;
+        }
+        footer a { color: var(--comic-yellow); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-name">Anyelo Dalton</span>
+            <span class="logo-studio">Star Studios CEO</span>
+        </a>
+        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver</a>
+    </header>
+
+    <section class="project-hero">
+        <div class="hero-inner">
+            <span class="hero-tag">📖 Narrativa Visual · Cómic · Novela Gráfica</span>
+            <h1>Novelas Gráficas<br><span>&</span> Cómics</h1>
+            <p>Historias contadas panel a panel — donde el dibujo y la palabra se fusionan en narrativa secuencial original.</p>
+            <div class="hero-pills">
+                <span class="pill pill-red">Entintado Digital</span>
+                <span class="pill pill-yellow">Narrativa Secuencial</span>
+                <span class="pill pill-outline">Guion & Arte</span>
+                <span class="pill pill-outline">Autoría Completa</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-wrap">
+
+        <div class="intro-block">
+            <span class="section-label">Sobre este trabajo</span>
+            <h2>El Arte de Contar en Viñetas</h2>
+            <p>
+                El cómic y la novela gráfica son para mí el medio más honesto de narrativa visual. Cada página
+                es una coreografía de planos, silencios y timing — donde el lector decide la velocidad de la historia.
+                Aquí desarrollo proyectos de autoría propia, desde el guion hasta el arte final.
+            </p>
+            <p>
+                Mi proceso va desde el guion literario y el storyboard rough hasta el entintado digital,
+                lettering y maquetación final. Trabajo con influencias del cómic europeo, el manga y el
+                cómic independiente americano.
+            </p>
+
+            <div class="techniques-row">
+                <span class="technique-tag">Lápiz Digital</span>
+                <span class="technique-tag">Entintado</span>
+                <span class="technique-tag">Lettering</span>
+                <span class="technique-tag">Color Plano</span>
+                <span class="technique-tag">Storyboard</span>
+                <span class="technique-tag">Maquetación</span>
+                <span class="technique-tag">Guion Literario</span>
+            </div>
+        </div>
+
+        <span class="section-label">Obras</span>
+        <h2 style="font-family:'Fredoka',sans-serif; font-size:2rem; color:var(--secondary-green); margin-bottom:0.3rem;">Proyectos & Capítulos</h2>
+
+        <div class="works-grid">
+            <div class="work-card">
+                <div class="work-thumb">📖</div>
+                <div class="work-info">
+                    <span class="work-vol">Obra 01</span>
+                    <h3>Título por definir</h3>
+                    <p>Agrega aquí una descripción breve de tu primera novela gráfica o cómic.</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-thumb">📖</div>
+                <div class="work-info">
+                    <span class="work-vol">Obra 02</span>
+                    <h3>Título por definir</h3>
+                    <p>Corto, saga, historia autoconclusiva — el formato que mejor sirva la historia.</p>
+                </div>
+            </div>
+            <div class="work-card">
+                <div class="work-thumb">📖</div>
+                <div class="work-info">
+                    <span class="work-vol">Obra 03</span>
+                    <h3>Título por definir</h3>
+                    <p>Próximamente. Nuevos proyectos de narrativa secuencial en desarrollo.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="placeholder-notice">
+            <span class="pn-icon">🚧</span>
+            <h3>Galería en construcción</h3>
+            <p>Pronto habrá páginas, viñetas y capítulos publicados aquí. ¡Vuelve pronto!</p>
+        </div>
+
+        <div class="cta-strip">
+            <h2>¿Quieres un cómic a medida?</h2>
+            <p>Acepto encargos de narrativa gráfica para proyectos personales, editoriales o de estudio.</p>
+            <a href="index.html#contacto-full" class="btn-red">Contactar →</a>
+            <a href="index.html#repertorio" class="btn-ghost">Ver más proyectos</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Anyelo Dalton · Star Studios · <a href="index.html">Volver al inicio</a></p>
+    </footer>
+</body>
+</html>

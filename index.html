@@ -154,9 +154,13 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.03);
             transition: 0.4s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
         }
 
-        .art-item:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.07); }
+        .art-item:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.10); }
 
         .art-preview {
             width: 100%;
@@ -167,7 +171,28 @@
             justify-content: center;
             color: var(--text-muted);
             font-style: italic;
+            position: relative;
+            overflow: hidden;
         }
+
+        /* Overlay "Ver Proyecto" al hover */
+        .art-preview::after {
+            content: 'Ver Proyecto →';
+            position: absolute;
+            inset: 0;
+            background: rgba(42, 71, 42, 0.82);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
+            font-style: normal;
+            letter-spacing: 1px;
+            opacity: 0;
+            transition: 0.35s;
+        }
+        .art-item:hover .art-preview::after { opacity: 1; }
 
         .art-info { padding: 1.8rem; }
         .art-type { font-size: 0.75rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
@@ -609,7 +634,7 @@
         </div>
 
         <div class="art-grid">
-            <div class="art-item">
+            <a href="proyecto-dungeon.html" class="art-item">
                 <div class="art-preview" style="background: linear-gradient(45deg, #1a1a1a, #2a472a);">
                     [Preview: I don't wanna be a dungeon creature]
                 </div>
@@ -618,43 +643,43 @@
                     <h3 class="art-title">I don't wanna be a dungeon creature</h3>
                     <p class="art-desc">Proyecto insignia de Star Studios. Dirección creativa, guion y supervisión de animación 2D.</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="art-item">
+            <a href="proyecto-comics.html" class="art-item">
                 <div class="art-preview">[Preview: Obra de Cómic]</div>
                 <div class="art-info">
                     <span class="art-type">Narrativa Visual</span>
                     <h3 class="art-title">Novelas Gráficas & Cómics</h3>
                     <p class="art-desc">Exploración de narrativa secuencial, entintado digital y storytelling visual original.</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="art-item">
+            <a href="proyecto-cortometrajes.html" class="art-item">
                 <div class="art-preview">[Preview: Cortometrajes]</div>
                 <div class="art-info">
                     <span class="art-type">Producción Audiovisual</span>
                     <h3 class="art-title">Cortometrajes Star Studios</h3>
                     <p class="art-desc">Colección de piezas experimentales y cortometrajes enfocados en análisis audiovisual.</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="art-item">
+            <a href="proyecto-sketchbook.html" class="art-item">
                 <div class="art-preview">[Preview: Sketchbook]</div>
                 <div class="art-info">
                     <span class="art-type">Bocetos & Práctica</span>
                     <h3 class="art-title">El Cuaderno de Dalton</h3>
                     <p class="art-desc">Estudios anatómicos, diseño de personajes y exploración de técnicas de dibujo rápido.</p>
                 </div>
-            </div>
+            </a>
 
-            <div class="art-item">
+            <a href="proyecto-branding.html" class="art-item">
                 <div class="art-preview">[Preview: Branding]</div>
                 <div class="art-info">
                     <span class="art-type">Diseño Gráfico</span>
                     <h3 class="art-title">Identidad & Branding</h3>
                     <p class="art-desc">Proyectos de diseño editorial, logotipos y empaques (como el proyecto NUTRAX).</p>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
